@@ -2,13 +2,19 @@ import React from 'react';
 import styles from './styles.module.sass';
 import $ from 'jquery';
 
+import Header from './Header.jsx';
+import SocialLinsk from './SocialLinks.jsx';
+
 
 class App extends React.Component {
   constructor() {
     super();
+    this.randBackgroundColor = this.randBackgroundColor.bind(this);
   }
-  componentDidMount() {
-    $('a').each(function() {
+
+  /* CREATES RANDOM BACKGROUND COLORS */
+  randBackgroundColor(element) {
+    $(element).each(function() {
       var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' +
         (Math.floor((256-199)*Math.random()) + 200) + ',' +
         (Math.floor((256-199)*Math.random()) + 200) + ')';
@@ -16,27 +22,26 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.randBackgroundColor('body');
+    this.randBackgroundColor('.randColor');
+    this.randBackgroundColor('a');
+
+  }
+
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.boxes}>
-          <div className={styles.title}>
-            <h1>Matthew Morgan</h1>
-            <p>Software Engineer</p>
-          </div>
-        </div>
-        <div className={styles.boxes}>
-          <div className={styles.socials}>
-            <a href='https://www.linkedin.com/in/mkmorgan1/'><i class="fab fa-linkedin"></i></a>
-            <a href='https://github.com/mkmorgan1'><i class="fab fa-github-square"></i></a>
-            <a href='https://twitter.com/m_kmorgan'><i class="fab fa-twitter-square"></i></a>
-          </div>
+        <Header styles={styles} />
+        <div className={`${styles.boxes} randColor`}>
 
         </div>
-        <div className={styles.boxes}>
+        <SocialLinsk styles={styles} />
+
+        <div className={`${styles.boxes} randColor`}>
           Box Three
         </div>
-        <div className={styles.boxes}>
+        <div className={`${styles.boxes} randColor`}>
           Box Four
         </div>
 
