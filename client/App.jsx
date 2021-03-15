@@ -3,7 +3,8 @@ import styles from './styles.module.sass';
 import $ from 'jquery';
 
 import Header from './Header.jsx';
-import SocialLinsk from './SocialLinks.jsx';
+import SocialLinks from './SocialLinks.jsx';
+import profilePhotos from './profilePhotos.js'
 
 
 class App extends React.Component {
@@ -34,9 +35,9 @@ class App extends React.Component {
       <div className={styles.container}>
         <Header styles={styles} />
         <div className={`${styles.boxes} randColor`}>
-
+          <img src={profilePhotos[2]} alt="Matthew Morgan" width='75%' height='75%'/>
         </div>
-        <SocialLinsk styles={styles} />
+        <SocialLinks styles={styles} />
 
         <div className={`${styles.boxes} randColor`}>
           Box Three
