@@ -5,17 +5,11 @@ import path from 'path';
 import { buildSchema } from 'graphql';
 import { graphqlHTTP } from 'express-graphql';
 
-import {createNewProject, getAllProjects} from '../database/index.js'
-
-/* SETTING UP  */
-// const schema = buildSchema(`
-//   type Query {
-//     getName(name: String): String
-//   }
-// `);
+import {createNewProject, getAllProjects, updateOneProject} from '../database/index.js'
 
 const schema = buildSchema(`
   type Message {
+    id: ID!
     name: String
     github: String
     deployedUrl: String
@@ -30,18 +24,17 @@ const schema = buildSchema(`
     media: String
   }
   type Query {
-    getProjects: Message
+    getProjects: [Message]
   }
   type Mutation {
     createProject(input: MessageInput): Message
+    updateProject(id: ID!, input: MessageInput): String
   }
-
 `);
-  // type Mutation {
-  //   creatProject(input:MessageInput) : Message
-  // }
+
 class ProfileInfo {
-  constructor({name, github, deployedUrl, description, media}) {
+  constructor({ _id, name, github, deployedUrl, description, media }) {
+    this.id = _id
     this.name = name || null;
     this.github = github || null;
     this.deployedUrl = deployedUrl || null;
@@ -62,21 +55,23 @@ var root = {
       })
     }).catch(err => err);
   },
-  createProject: async ({name, github, deployedUrl, description, media}) => {
-    const inputData = {
-      name: name,
-      github: github,
-      deployedUrl: deployedUrl,
-      description: description,
-      media: media
-    }
+  createProject: async ({input}) => {
     return await new Promise((resolve, reject) => {
-      createNewProject(inputData, (err, result) => {
+      createNewProject(input, (err, result) => {
         err ? reject(err) : resolve(result);
       })
-    }).then(() => {
-      return new ProfileInfo(inputData);
-    }).catch(err => err);
+    })
+      .then((data) => new ProfileInfo(data))
+      .catch(err => err);
+  },
+  updateProject: async({id, input}) => {
+    return new Promise((resolve, reject) => {
+      updateOneProject(id, input, (err, result) => {
+        err ? reject(err) : resolve(result);
+      })
+    })
+      .then(() => "Successful Update")
+      .catch(() => 'Failed to Update');
   }
 };
 
@@ -89,38 +84,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/test', (err, res) => {
-  const getProjects = async () => {
-    return new Promise((resolve, reject) => {
-      getAllProjects((err, result) => {
-        err ? reject(err) : resolve(result);
-      })
-    }).then(data => res.send(data)).catch(err => res.send(err));
-  }
-  getProjects();
+  getAllProjects((err, result) => {
+    err ? res.status(404).send(err) : res.status(200).send(result);
+  })
 })
 
 app.listen(PORT , () => {
   console.log(`listening on port: ${PORT}
 Running a GraphQL API server at http://localhost:${PORT}/graphql`);
 });
-
-
-// var name = "matt"
-// var query = `query getName($name: String) {
-//   getName(name: $name)
-// }`
-// fetch('/graphql', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'Accept': 'application/json',
-//   },
-//   body: JSON.stringify({
-//     query,
-//     variables: {
-//       name: name,
-//     }
-//   })
-// })
-//   .then(r => r.json())
-//   .then(data => console.log('data returned:', data));

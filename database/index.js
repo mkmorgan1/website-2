@@ -13,14 +13,20 @@ db.once('open', () => {
   console.log('Connected to Mongodb');
 });
 
+export const getAllProjects = (done) => {
+  Project.find({}, (err, res) => {
+    err ? done(err) : done(null, res);
+  });
+}
+
 export const createNewProject = (data, done) => {
   Project.create(data, (err, res) => {
     err ? done(err) : done(null, res);
   });
 }
 
-export const getAllProjects = (done) => {
-  Project.find({}, (err, res) => {
-    err ? done(err) : done(null, res);
+export const updateOneProject = (id, data, done) => {
+  Project.updateOne({_id: id}, data, (err, res) => {
+    err ? done(err) : done(null, res)
   });
 }
