@@ -9,4 +9,4 @@ const ProjectSchema = new mongoose.Schema({
   media: String,
 });
 
-export const Project = mongoose.model('login', ProjectSchema);
+export const Project = mongoose.model('projects', ProjectSchema);

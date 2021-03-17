@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { Project } from './schema.js';
 
 try {
-  mongoose.connect('mongodb://localhost/profiles', {useNewUrlParser: true, useUnifiedTopology: true});
+  mongoose.connect('mongodb://localhost/website_data', {useNewUrlParser: true, useUnifiedTopology: true});
 } catch(error) {
   console.error(error);
 }
@@ -15,6 +15,12 @@ db.once('open', () => {
 
 export const createNewProject = (data, done) => {
   Project.create(data, (err, res) => {
+    err ? done(err) : done(null, res);
+  });
+}
+
+export const getAllProjects = (done) => {
+  Project.find({}, (err, res) => {
     err ? done(err) : done(null, res);
   });
 }
