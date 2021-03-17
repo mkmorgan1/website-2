@@ -1,7 +1,7 @@
 // FULL PAGE
 body
   margin: 0 auto
-  max-width: 1000px
+  // max-width: 1500px
   font-family: 'Montserrat', sans-serif
 
 .container
@@ -11,8 +11,10 @@ body
   flex-wrap: wrap
 
 .boxes
-  width: 500px
-  height: 500px
+  width: 50vw
+  min-width: 500px
+  min-height: 500px
+  height: 50vw
   text-align: center
 
 .title
@@ -27,19 +29,29 @@ body
   height: 100%
   display: flex
   flex-wrap: wrap
-  a
-    font-size: 100px
+  .linkBox
+    line-height: 100%
+    font-size: 700%
     min-width: 50%
-    height: 50%
+    height: 25vw
     flex-grow: 2
-    i
-      text-align: center
-      display: relative
-      top: 50%
-      transform: translateY(55%)
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    a
+      i
+        color: grey
+        &:hover
+          color: black
 
-img
-  border-radius: 50%
-  display: relative
-  top: 25%
-  transform: translateY(15%)
+.profilePhotoBox
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  img
+    border-radius: 50%
+    vertical-align: middle
+
+.projectBox
+  padding: 30px

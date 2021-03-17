@@ -4,12 +4,18 @@ import $ from 'jquery';
 
 import Header from './Header.jsx';
 import SocialLinks from './SocialLinks.jsx';
-import profilePhotos from './profilePhotos.js'
+import ProfilePhoto from './ProfilePhoto.jsx';
+import Projects from './Projects.jsx';
 
 
 class App extends React.Component {
   constructor() {
     super();
+    this.state = {
+      appData: [],
+    }
+    this.makeColors = this.makeColors.bind(this);
+    this.getTheProjects = this.getTheProjects.bind(this);
     this.randBackgroundColor = this.randBackgroundColor.bind(this);
   }
 
@@ -23,24 +29,61 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
+  getTheProjects() {
+    var query = `query {
+      getProjects {
+          id
+          name
+          github
+          deployedUrl
+          description
+          media
+        }
+      }`;
+
+    fetch('/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+    })
+      .then(r => r.json())
+      .then(data => {
+        this.setState({
+          appData: data.data.getProjects
+        })
+      })
+      .then(() => {
+        this.randBackgroundColor('body');
+        this.randBackgroundColor('.randColor');
+      });
+  }
+
+  makeColors() {
     this.randBackgroundColor('body');
     this.randBackgroundColor('.randColor');
-    this.randBackgroundColor('a');
+  }
 
+  componentDidMount() {
+    this.getTheProjects();
   }
 
   render() {
     return (
       <div className={styles.container}>
         <Header styles={styles} />
-        <div className={`${styles.boxes} randColor`}>
-          <img src={profilePhotos[2]} alt="Matthew Morgan" width='75%' height='75%'/>
-        </div>
+        <ProfilePhoto styles={styles} />
         <SocialLinks styles={styles} />
-
+        <Projects
+          styles={styles}
+          appData={this.state.appData}
+        />
         <div className={`${styles.boxes} randColor`}>
-          Box Three
+          <button onClick={this.makeColors}>test</button>
         </div>
         <div className={`${styles.boxes} randColor`}>
           Box Four
