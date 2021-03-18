@@ -4,8 +4,8 @@ import $ from 'jquery';
 
 import Header from './Header.jsx';
 import SocialLinks from './SocialLinks.jsx';
-import ProfilePhoto from './ProfilePhoto.jsx';
-import Projects from './Projects.jsx';
+import ProfilePhoto from './profilePhoto/ProfilePhoto.jsx';
+import Projects from './projects/Projects.jsx';
 
 
 class App extends React.Component {
@@ -28,7 +28,12 @@ class App extends React.Component {
       $(this).css("background-color", hue);
     });
   }
+  makeColors() {
+    this.randBackgroundColor('body');
+    this.randBackgroundColor('.randColor');
+  }
 
+  /* API CALL FOR ALL DATA */
   getTheProjects() {
     var query = `query {
       getProjects {
@@ -63,11 +68,6 @@ class App extends React.Component {
       });
   }
 
-  makeColors() {
-    this.randBackgroundColor('body');
-    this.randBackgroundColor('.randColor');
-  }
-
   componentDidMount() {
     this.getTheProjects();
   }
@@ -78,6 +78,9 @@ class App extends React.Component {
         <Header styles={styles} />
         <ProfilePhoto styles={styles} />
         <SocialLinks styles={styles} />
+        <div className={`${styles.boxes} randColor`}>
+          Box on
+        </div>
         <Projects
           styles={styles}
           appData={this.state.appData}
@@ -86,7 +89,7 @@ class App extends React.Component {
           <button onClick={this.makeColors}>test</button>
         </div>
         <div className={`${styles.boxes} randColor`}>
-          Box Four
+          contact:
         </div>
 
       </div>
