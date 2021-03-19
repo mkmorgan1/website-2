@@ -14,6 +14,8 @@ const schema = buildSchema(`
     github: String
     deployedUrl: String
     description: String
+    frontEnd: String
+    backEnd: String
     media: String
   }
   input MessageInput {
@@ -21,6 +23,8 @@ const schema = buildSchema(`
     github: String
     deployedUrl: String
     description: String
+    frontEnd: String
+    backEnd: String
     media: String
   }
   type Query {
@@ -33,12 +37,14 @@ const schema = buildSchema(`
 `);
 
 class ProfileInfo {
-  constructor({ _id, name, github, deployedUrl, description, media }) {
+  constructor({ _id, name, github, deployedUrl, description, media, frontEnd, backEnd }) {
     this.id = _id
     this.name = name || null;
     this.github = github || null;
     this.deployedUrl = deployedUrl || null;
     this.description = description || null;
+    this.frontEnd = frontEnd || null;
+    this.backEnd =  backEnd || null;
     this.media = media || null;
   }
 }

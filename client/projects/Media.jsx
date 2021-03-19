@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ProjectMedia = ({styles, media}) => {
-  if (media.slice(media.length - 3) === 'mov') {
+const Media = ({styles, media}) => {
+  if (media && media.slice(media.length - 3) === 'mov') {
     return (
       <video controls id={media}>
         <source
@@ -10,6 +10,13 @@ const ProjectMedia = ({styles, media}) => {
         Your browser does not support HTML5 video.
       </video>
     );
+  } else if (media && media.slice(media.length - 4) === 'webp') {
+    return (
+      <div>
+        <img src={media} alt=""/>
+      </div>
+    )
+
   } else {
     return (
       <div></div>
@@ -17,4 +24,4 @@ const ProjectMedia = ({styles, media}) => {
   }
 }
 
-export default ProjectMedia;
+export default Media;

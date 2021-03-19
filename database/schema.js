@@ -6,6 +6,8 @@ const ProjectSchema = new mongoose.Schema({
   github: String,
   deployedUrl: String,
   description: String,
+  frontEnd: String,
+  backEnd: String,
   media: String,
 });
 

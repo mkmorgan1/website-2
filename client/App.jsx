@@ -42,6 +42,8 @@ class App extends React.Component {
           github
           deployedUrl
           description
+          frontEnd
+          backEnd
           media
         }
       }`;
@@ -76,15 +78,17 @@ class App extends React.Component {
     return (
       <div className={styles.container}>
         <Header styles={styles} />
-        <ProfilePhoto styles={styles} />
         <SocialLinks styles={styles} />
+        <ProfilePhoto styles={styles} />
+
         <div className={`${styles.boxes} randColor`}>
-          Box on
+          Box one
         </div>
         <Projects
           styles={styles}
           appData={this.state.appData}
         />
+
         <div className={`${styles.boxes} randColor`}>
           <button onClick={this.makeColors}>test</button>
         </div>

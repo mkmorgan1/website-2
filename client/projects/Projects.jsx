@@ -1,27 +1,28 @@
 import React from 'react';
-import ProjectMedia from './ProjectMedia.jsx';
+import Media from './Media.jsx';
+import Links from './Links.jsx';
 
 const Project = ({app, styles}) => {
-  const splitDescription = app.description.split('\n')
   return (
     <div className={`${styles.boxes} randColor`}>
       <div className={styles.projectBox}>
         <div>
+          <Links
+            styles={styles}
+            github={app.github}
+            deployed={app.deployedUrl}
+          />
           <h2>{app.name}</h2>
-          <div>
-            <a href={app.github}><i class="fab fa-github"></i></a>
-            <a href={app.deployedUrl}><i class="fas fa-external-link-alt"></i></a>
-          </div>
         </div>
         <hr/>
-        <br/>
-        <ProjectMedia
+        <Media
           media={app.media}
           styles={styles}
         />
         <div className={styles.description}>
-          <div><b>Front-End: </b>{splitDescription[0]}</div>
-          <div><b>Back-End: </b>{splitDescription[1]}</div>
+          <q>{app.description}</q>
+          <div><b>Front-End: </b>{app.frontEnd}</div>
+          <div><b>Back-End: </b>{app.backEnd}</div>
         </div>
       </div>
     </div>
