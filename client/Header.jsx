@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default ({styles}) => {
+export default ({styles, makeColors}) => {
   return (
     <div className={`${styles.boxes} randColor`}>
       <div className={styles.title}>
-        <h1 className={styles.textShadow}>Matthew Morgan</h1>
+        <p className={styles.titleName} onClick={makeColors}>Matthew Morgan</p>
         <p>Software Engineer</p>
       </div>
     </div>

@@ -12,9 +12,7 @@ const Media = ({styles, media}) => {
     );
   } else if (media && media.slice(media.length - 4) === 'webp') {
     return (
-      <div>
-        <img src={media} alt=""/>
-      </div>
+      <img src={media} alt=''/>
     )
 
   } else {

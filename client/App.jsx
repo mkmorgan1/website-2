@@ -25,7 +25,7 @@ class App extends React.Component {
       var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' +
         (Math.floor((256-199)*Math.random()) + 200) + ',' +
         (Math.floor((256-199)*Math.random()) + 200) + ')';
-      $(this).css("background-color", hue);
+      $(this).css('background-color', hue);
     });
   }
   makeColors() {
@@ -77,22 +77,25 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <Header styles={styles} />
-        <SocialLinks styles={styles} />
+        <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
+        <SocialLinks styles={styles} />
 
         <div className={`${styles.boxes} randColor`}>
-          Box one
+          BIO
         </div>
+
+        <div className={`${styles.longBoxes} randColor`}>
+          <div className={styles.projectsTitle}>
+            <p className={styles.titleName}>Applications</p>
+          </div>
+        </div>
+
         <Projects
           styles={styles}
           appData={this.state.appData}
         />
-
-        <div className={`${styles.boxes} randColor`}>
-          <button onClick={this.makeColors}>test</button>
-        </div>
-        <div className={`${styles.boxes} randColor`}>
+        <div className={`${styles.longBoxes} randColor`}>
           contact:
         </div>
 

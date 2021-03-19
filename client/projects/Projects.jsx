@@ -1,20 +1,21 @@
 import React from 'react';
 import Media from './Media.jsx';
-import Links from './Links.jsx';
+import Header from './Header.jsx';
 
 const Project = ({app, styles}) => {
   return (
     <div className={`${styles.boxes} randColor`}>
       <div className={styles.projectBox}>
         <div>
-          <Links
+          <Header
+            name={app.name}
             styles={styles}
             github={app.github}
             deployed={app.deployedUrl}
           />
-          <h2>{app.name}</h2>
         </div>
         <hr/>
+        <br/>
         <Media
           media={app.media}
           styles={styles}

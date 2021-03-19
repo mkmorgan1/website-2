@@ -3,9 +3,15 @@ body
   margin: 0 auto
   // max-width: 1500px
   font-family: 'Montserrat', sans-serif
+  color: #555555
+
 *:focus
   outline: none
-
+hr
+  width: 90%
+  height: 1px
+  background-color: rgba(147,147,147,0.49)
+  border: none
 i
   color: #555555
   &:hover
@@ -25,14 +31,25 @@ i
   height: 50vw
   text-align: center
 
+.longBoxes
+  width: 100vw
+  min-width: 500px
+  min-height: 250px
+  height: 25vw
+  text-align: center
+
+@media only screen and (max-width: 1000px)
+  .longBoxes
+    width: 50vw
+
 .title
   padding-top: 35%
   h1
     font-weight: bold
-  p
-    font-style: italic
-.textShadow
-  color: #444
+
+.titleName
+  font-size: 300%
+  font-family: 'Monoton', cursive
 
 .socials
   width: 100%
@@ -54,6 +71,7 @@ i
   to
     transform: rotate(359deg)
 
+// PROFILE PHOTO
 .profilePhotoBox
   display: inline-flex
   justify-content: center
@@ -64,10 +82,23 @@ i
     vertical-align: middle
     animation: rotation 40s infinite linear
 
+// PROJECTS TITLE BOX
+.projectsTitle
+  height: 100%
+  line-height: 100%
+  display: inline-flex
+  justify-content: center
+  align-items: center
+
+// INDIVIDUAL PROJECTS
 .projectBox
-  padding: 30px
-  video
-    height: 25vw
+  height: 100%
+  padding: 40px 0
+  .projectHeaderName
+    display: inline
+  video, img
+    height: 50%
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px
   a
     margin: 20px
     font-size: 150%
