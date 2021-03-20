@@ -1,4 +1,4 @@
-class ProjectInfo {
+export class ProjectInfo {
   constructor({ _id, name, github, deployedUrl, description, media, frontEnd, backEnd }) {
     this.id = _id
     this.name = name || null;
@@ -11,4 +11,9 @@ class ProjectInfo {
   }
 }
 
-export default ProjectInfo;
+export class Bio {
+  constructor({_id, bio}) {
+    this.id = _id;
+    this.bio = bio || null;
+  }
+}

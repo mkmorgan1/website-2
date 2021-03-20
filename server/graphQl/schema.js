@@ -11,6 +11,13 @@ const schema = buildSchema(`
     backEnd: String
     media: String
   }
+  input BioInput {
+    bio: [String]
+  }
+  type Bio {
+    id: ID!
+    bio: [String]
+  }
   input ProjectInput {
     name: String
     github: String
@@ -21,9 +28,11 @@ const schema = buildSchema(`
     media: String
   }
   type Query {
+    getBio: Bio
     getProjects: [Project]
   }
   type Mutation {
+    createBio(input: BioInput): Bio
     createProject(input: ProjectInput): Project
     updateProject(id: ID!, input: ProjectInput): String
   }

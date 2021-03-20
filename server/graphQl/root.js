@@ -1,10 +1,30 @@
-import ProjectInfo from './ProjectInfo.js';
-import {createNewProject, getAllProjects, updateOneProject} from '../../database/index.js'
+import { ProjectInfo, Bio } from './ProjectInfo.js';
+import { bio, project } from '../../database/index.js'
 
 const root = {
+  /* BIO */
+  createBio: async ({input}) => {
+    return await new Promise((resolve, reject) => {
+      bio.create(input, (err, result) => {
+        err ? reject(err): resolve(result)
+      })
+    })
+      .then(data => new Bio(data))
+      .catch(err => err);
+  },
+  getBio: async () => {
+    return await new Promise((resolve, reject) => {
+      bio.get((err, result) => {
+        err ? reject(err) : resolve(result)
+      });
+    })
+    .then(data => new Bio(data[0]))
+    .catch(err => err);
+  },
+  /* PROJECTS */
   getProjects: async () => {
     return await new Promise((resolve, reject) => {
-      getAllProjects((err, result) => {
+      project.get((err, result) => {
         err ? reject(err) : resolve(result);
       })
     }).then(data => {
@@ -15,7 +35,7 @@ const root = {
   },
   createProject: async ({input}) => {
     return await new Promise((resolve, reject) => {
-      createNewProject(input, (err, result) => {
+      project.get(input, (err, result) => {
         err ? reject(err) : resolve(result);
       })
     })
@@ -24,7 +44,7 @@ const root = {
   },
   updateProject: async({id, input}) => {
     return new Promise((resolve, reject) => {
-      updateOneProject(id, input, (err, result) => {
+      project.update(id, input, (err, result) => {
         err ? reject(err) : resolve(result);
       })
     })

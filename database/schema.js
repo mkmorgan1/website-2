@@ -10,5 +10,8 @@ const ProjectSchema = new mongoose.Schema({
   backEnd: String,
   media: String,
 });
-
+const BioSchema = new mongoose.Schema({
+  bio: Array
+})
 export const Project = mongoose.model('projects', ProjectSchema);
+export const Bio = mongoose.model('bios', BioSchema);
