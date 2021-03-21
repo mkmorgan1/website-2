@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      appData: [],
+      projectData: [],
       bioData: {bio: ''},
     }
     this.makeColors = this.makeColors.bind(this);
@@ -49,20 +49,21 @@ class App extends React.Component {
     })
       .then(r => r.json())
       .then(data => {
-        console.log(data)
         this.setState({
           [stateName]: data.data[dataFunc]
         })
       })
       .catch(err => err)
       .then(() => {
-        this.randBackgroundColor('body');
-        this.randBackgroundColor('.randColor');
-      })
+        if (stateName === 'projectData') {
+          this.randBackgroundColor('body');
+          this.randBackgroundColor('.randColor');
+        }
+      });
     }
 
   componentDidMount() {
-    this.getData(project.get, 'appData', 'getProjects');
+    this.getData(project.get, 'projectData', 'getProjects')
     this.getData(bio.get, 'bioData', 'getBio');
   }
 
@@ -73,22 +74,30 @@ class App extends React.Component {
         <ProfilePhoto styles={styles} />
         <SocialLinks styles={styles} />
 
+        {/* BIO */}
         <div className={`${styles.boxes} randColor`}>
-          {this.state.bioData.bio}
+          <div className={styles.centerContent}>
+            {this.state.bioData.bio}
+          </div>
         </div>
 
+        {/* APPLICATIONS HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
-          <div className={styles.projectsTitle}>
+          <div className={styles.centerContent}>
             <p className={styles.titleName}>Applications</p>
           </div>
         </div>
 
         <Projects
           styles={styles}
-          appData={this.state.appData}
+          appData={this.state.projectData}
         />
+
+        {/* CONTACT */}
         <div className={`${styles.longBoxes} randColor`}>
-          contact:
+          <div className={styles.centerContent}>
+            contact:
+          </div>
         </div>
 
       </div>
