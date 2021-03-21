@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './styles.module.sass';
 import $ from 'jquery';
 
+import {bio, project} from './requestQueries.js'
+
 import Header from './Header.jsx';
 import SocialLinks from './SocialLinks.jsx';
 import ProfilePhoto from './profilePhoto/ProfilePhoto.jsx';
@@ -13,9 +15,10 @@ class App extends React.Component {
     super();
     this.state = {
       appData: [],
+      bioData: {bio: ''},
     }
     this.makeColors = this.makeColors.bind(this);
-    this.getTheProjects = this.getTheProjects.bind(this);
+    this.getData = this.getData.bind(this);
     this.randBackgroundColor = this.randBackgroundColor.bind(this);
   }
 
@@ -34,44 +37,33 @@ class App extends React.Component {
   }
 
   /* API CALL FOR ALL DATA */
-  getTheProjects() {
-    var query = `query {
-      getProjects {
-          id
-          name
-          github
-          deployedUrl
-          description
-          frontEnd
-          backEnd
-          media
-        }
-      }`;
-
+  getData(request, stateName, dataFunc) {
+    const query = request;
     fetch('/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({
-        query
-      })
+      body: JSON.stringify({ query })
     })
       .then(r => r.json())
       .then(data => {
+        console.log(data)
         this.setState({
-          appData: data.data.getProjects
+          [stateName]: data.data[dataFunc]
         })
       })
+      .catch(err => err)
       .then(() => {
         this.randBackgroundColor('body');
         this.randBackgroundColor('.randColor');
-      });
-  }
+      })
+    }
 
   componentDidMount() {
-    this.getTheProjects();
+    this.getData(project.get, 'appData', 'getProjects');
+    this.getData(bio.get, 'bioData', 'getBio');
   }
 
   render() {
@@ -82,7 +74,7 @@ class App extends React.Component {
         <SocialLinks styles={styles} />
 
         <div className={`${styles.boxes} randColor`}>
-          BIO
+          {this.state.bioData.bio}
         </div>
 
         <div className={`${styles.longBoxes} randColor`}>
