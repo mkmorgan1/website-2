@@ -73,7 +73,14 @@ class App extends React.Component {
       <div className={styles.container}>
         <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
-        <SocialLinks styles={styles} />
+
+        <div  className={`${styles.boxes} randColor`}>
+          <div className={styles.smallBoxContainer}>
+            <div className={`${styles.smallBox} randColor`}></div>
+            <div className={`${styles.smallBox} randColor`}></div>
+            <div className={`${styles.smallBox} randColor`}></div>
+          </div>
+        </div>
         <Bio styles={styles} bioData={this.state.bioData}/>
 
         {/* APPLICATIONS HEADER */}
@@ -88,8 +95,10 @@ class App extends React.Component {
         {/* CONTACT */}
         <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
+            <p className={styles.titleName}>Contact</p>
           </div>
         </div>
+        <SocialLinks styles={styles} />
 
       </div>
 

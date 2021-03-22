@@ -1,7 +1,6 @@
 // FULL PAGE
 body
   margin: 0 auto
-  // max-width: 1500px
   font-family: 'Montserrat', sans-serif
   color: #555555
 
@@ -19,8 +18,8 @@ i
     color: black
 
 .container
-  justify-content: center;
-  align-content: center;
+  justify-content: center
+  align-content: center
   display: inline-flex
   flex-wrap: wrap
 
@@ -34,32 +33,40 @@ i
 .longBoxes
   width: 100vw
   min-width: 500px
-  min-height: 250px
+  min-height: 125px
   height: 25vw
   text-align: center
 
 @media only screen and (max-width: 1000px)
   .longBoxes
     width: 50vw
+    height: 12.5vw
+
+.longBoxesHeight
+  min_height: 125px
+  height: 12vw
 
 .titleName
   padding: 0 20px
   font-size: 300%
   font-family: 'Monoton', cursive
 
-.socials
+.smallBoxContainer
   width: 100%
   height: 100%
   display: flex
   flex-wrap: wrap
-  .linkBox
-    line-height: 100%
-    font-size: 700%
+  .smallBox
     min-width: 50%
     flex-grow: 2
     display: inline-flex
     justify-content: center
     align-items: center
+  .contactLink
+    cursor: pointer
+    min-width: 25%
+    line-height: 100%
+    font-size: 500%
 
 @keyframes rotation
   from
