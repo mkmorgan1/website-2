@@ -7,7 +7,7 @@ const ProfilePhoto = ({styles}) => {
   useEffect(() => {
     setInterval(() => {
       index++;
-      if (index === profilePhotos.length + 1) {
+      if (index === profilePhotos.length) {
         index = 0;
         setPhoto(profilePhotos[index])
       } else {

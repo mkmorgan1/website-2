@@ -74,23 +74,7 @@ class App extends React.Component {
         <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
         <SocialLinks styles={styles} />
-
-        {/* BIO */}
-        <Bio
-          styles={styles}
-          bioData={this.state.bioData}
-        />
-        {/* <div className={`${styles.boxes} randColor`}>
-          <ScrollAnimation
-            animateIn='fadeIn'
-            duration='2'
-            className={styles.centerContent}>
-            <div className={styles.bio}>
-              <h1>Welcome!</h1>
-              <p>{this.state.bioData.bio}</p>
-            </div>
-          </ScrollAnimation>
-        </div> */}
+        <Bio styles={styles} bioData={this.state.bioData}/>
 
         {/* APPLICATIONS HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
@@ -99,10 +83,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        <Projects
-          styles={styles}
-          appData={this.state.projectData}
-        />
+        <Projects styles={styles} appData={this.state.projectData}/>
 
         {/* CONTACT */}
         <div className={`${styles.longBoxes} randColor`}>

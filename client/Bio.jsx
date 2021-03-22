@@ -7,13 +7,12 @@ const Bio = ({bioData, styles}) => {
       <ScrollAnimation
         animateIn='fadeIn'
         duration='2'
-        className={styles.centerContent}>
-      {/* <div className={styles.centerContent}> */}
+        className={styles.centerContent
+      }>
         <div className={styles.bio}>
           <h1>Welcome!</h1>
           <p>{bioData.bio}</p>
         </div>
-      {/* </div> */}
       </ScrollAnimation>
     </div>
   );
