@@ -5,8 +5,9 @@ import $ from 'jquery';
 import {bio, project} from './requestQueries.js'
 
 import Header from './Header.jsx';
-import SocialLinks from './SocialLinks.jsx';
 import ProfilePhoto from './profilePhoto/ProfilePhoto.jsx';
+import SocialLinks from './SocialLinks.jsx';
+import Bio from './Bio.jsx'
 import Projects from './projects/Projects.jsx';
 
 
@@ -75,11 +76,21 @@ class App extends React.Component {
         <SocialLinks styles={styles} />
 
         {/* BIO */}
-        <div className={`${styles.boxes} randColor`}>
-          <div className={styles.centerContent}>
-            {this.state.bioData.bio}
-          </div>
-        </div>
+        <Bio
+          styles={styles}
+          bioData={this.state.bioData}
+        />
+        {/* <div className={`${styles.boxes} randColor`}>
+          <ScrollAnimation
+            animateIn='fadeIn'
+            duration='2'
+            className={styles.centerContent}>
+            <div className={styles.bio}>
+              <h1>Welcome!</h1>
+              <p>{this.state.bioData.bio}</p>
+            </div>
+          </ScrollAnimation>
+        </div> */}
 
         {/* APPLICATIONS HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
@@ -96,7 +107,6 @@ class App extends React.Component {
         {/* CONTACT */}
         <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
-            contact:
           </div>
         </div>
 

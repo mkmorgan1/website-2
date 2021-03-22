@@ -21,6 +21,15 @@ const root = {
     .then(data => new Bio(data[0]))
     .catch(err => err);
   },
+  updateBio: async ({id, input}) => {
+    return await new Promise((resolve, reject) => {
+      bio.update(id, input, (err, result) => {
+        err ? reject(err): resolve(result);
+      });
+    })
+    .then(() => 'Successful Bio Update')
+    .catch(err => err);
+  },
   /* PROJECTS */
   getProjects: async () => {
     return await new Promise((resolve, reject) => {
@@ -48,7 +57,7 @@ const root = {
         err ? reject(err) : resolve(result);
       })
     })
-      .then(() => "Successful Update")
+      .then(() => "Successful Project Update")
       .catch(() => 'Failed to Update');
   }
 };

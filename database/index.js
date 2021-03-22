@@ -24,6 +24,11 @@ export const bio = {
     Bio.find({}, (err, res) => {
       err ? done(err) : done(null, res);
     });
+  },
+  update: (id, data, done) => {
+    Bio.updateOne({_id: id}, data, (err, res) => {
+      err ? done(err) : done(null, res);
+    })
   }
 }
 

@@ -33,6 +33,7 @@ const schema = buildSchema(`
   }
   type Mutation {
     createBio(input: BioInput): Bio
+    updateBio(id: ID!, input: BioInput): String
     createProject(input: ProjectInput): Project
     updateProject(id: ID!, input: ProjectInput): String
   }
