@@ -1,27 +1,41 @@
 import React from 'react';
 
+const SocialLink = ({styles, link, logo}) => {
+  return (
+    <div className={`${styles.smallBox} ${styles.contactLink} randColor`}>
+      <a href={link} target='_blank'>{logo}</a>
+    </div>
+  )
+}
+
 export default ({styles}) => {
   return (
     <div className={styles.longBoxes}>
       <div className={styles.smallBoxContainer}>
         {/* EMAIL */}
-        <div className={`${styles.smallBox} ${styles.contactLink} randColor`}>
-          <a href="mailto:mkmorgan1994@gmail.com?subject=Job Offer&body=Hey Matt, your website is spectacular! How do you feel about coming and working for us?">
-            <i class="fas fa-paper-plane"></i>
-          </a>
-        </div>
+        <SocialLink
+          styles={styles}
+          link="mailto:mkmorgan1994@gmail.com?subject=Job Offer&body=Hey Matt, your website is spectacular! How do you feel about coming and working for us?"
+          logo={<i class="fas fa-paper-plane"></i>}
+        />
         {/* LINKEDIN */}
-        <div className={`${styles.smallBox} ${styles.contactLink} randColor`}>
-          <a href='https://www.linkedin.com/in/mkmorgan1/' target='_blank'><i className='fab fa-linkedin-in'></i></a>
-        </div>
+        <SocialLink
+          styles={styles}
+          link='https://www.linkedin.com/in/mkmorgan1/'
+          logo={<i className='fab fa-linkedin-in'></i>}
+        />
         {/* GITHUB */}
-        <div className={`${styles.smallBox}  ${styles.contactLink} randColor`}>
-          <a href='https://github.com/mkmorgan1' target='_blank'><i className='fab fa-github'></i></a>
-        </div>
+        <SocialLink
+          styles={styles}
+          link='https://github.com/mkmorgan1'
+          logo={<i className='fab fa-github'></i>}
+        />
         {/* TWITTER */}
-        <div className={`${styles.smallBox}  ${styles.contactLink} randColor`}>
-          <a href='https://twitter.com/m_kmorgan' target='_blank'><i className='fab fa-twitter'></i></a>
-        </div>
+        <SocialLink
+          styles={styles}
+          link='https://twitter.com/m_kmorgan'
+          logo={<i className='fab fa-twitter'></i>}
+        />
       </div>
     </div>
   );

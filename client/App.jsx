@@ -21,6 +21,19 @@ class App extends React.Component {
     this.makeColors = this.makeColors.bind(this);
     this.getData = this.getData.bind(this);
     this.randBackgroundColor = this.randBackgroundColor.bind(this);
+    this.redirectToHttps = this.redirectToHttps.bind(this);
+  }
+
+  /* REDIRECT TO HTTPS ON DEPLOYMENT */
+  redirectToHttps() {
+    const link = window.location.href;
+      if(link[4] !== "s" && !(link.includes('localhost'))){
+        let clink = "";
+        for (let i = 4; i < link.length; i++) {
+          clink += link[i];
+        }
+      window.location.href = `https${clink}`;
+    }
   }
 
   /* CREATES RANDOM BACKGROUND COLORS */
@@ -64,6 +77,7 @@ class App extends React.Component {
     }
 
   componentDidMount() {
+    this.redirectToHttps();
     this.getData(project.get, 'projectData', 'getProjects')
     this.getData(bio.get, 'bioData', 'getBio');
   }
@@ -73,14 +87,6 @@ class App extends React.Component {
       <div className={styles.container}>
         <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
-
-        {/* <div  className={`${styles.boxes} randColor`}>
-          <div className={styles.smallBoxContainer}>
-            <div className={`${styles.smallBox} randColor`}></div>
-            <div className={`${styles.smallBox} randColor`}></div>
-            <div className={`${styles.smallBox} randColor`}></div>
-          </div>
-        </div> */}
         <Bio styles={styles} bioData={this.state.bioData}/>
 
         {/* APPLICATIONS HEADER */}
@@ -92,17 +98,15 @@ class App extends React.Component {
 
         <Projects styles={styles} appData={this.state.projectData}/>
 
-        {/* CONTACT */}
+        {/* CONTACT HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
             <p className={styles.titleName}>Contact</p>
           </div>
         </div>
+
         <SocialLinks styles={styles} />
-
       </div>
-
-
     )
   }
 }

@@ -1,8 +1,10 @@
+/* SERVER */
 import express from 'express';
 import https from 'https';
-import secure from 'express-force-https'
 const app = express();
 const PORT = 80;
+
+/* PACKAGES */
 import path from 'path';
 import fs from 'fs';
 
@@ -18,7 +20,6 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(secure);
 
 /* FOR POSTMAN */
 app.get('/test', (err, res) => {
