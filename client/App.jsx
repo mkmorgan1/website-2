@@ -74,13 +74,13 @@ class App extends React.Component {
         <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
 
-        <div  className={`${styles.boxes} randColor`}>
+        {/* <div  className={`${styles.boxes} randColor`}>
           <div className={styles.smallBoxContainer}>
             <div className={`${styles.smallBox} randColor`}></div>
             <div className={`${styles.smallBox} randColor`}></div>
             <div className={`${styles.smallBox} randColor`}></div>
           </div>
-        </div>
+        </div> */}
         <Bio styles={styles} bioData={this.state.bioData}/>
 
         {/* APPLICATIONS HEADER */}

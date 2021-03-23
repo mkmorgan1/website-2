@@ -26,25 +26,30 @@ i
 .boxes
   width: 50vw
   min-width: 500px
-  min-height: 500px
+  max-width: 750px
   height: 50vw
+  min-height: 500px
+  max-height: 750px
   text-align: center
 
 .longBoxes
   width: 100vw
   min-width: 500px
-  min-height: 125px
+  max-width: 1500px
   height: 25vw
+  min-height: 125px
+  max-height: 325px
   text-align: center
 
 @media only screen and (max-width: 1000px)
   .longBoxes
     width: 50vw
-    height: 12.5vw
-
-.longBoxesHeight
-  min_height: 125px
-  height: 12vw
+    height: 125px
+  .headerBox
+    height: 50vw
+    min-height: 500px
+  .title
+    height: 80%
 
 .titleName
   padding: 0 20px
@@ -65,8 +70,9 @@ i
   .contactLink
     cursor: pointer
     min-width: 25%
+    height: 100%
     line-height: 100%
-    font-size: 500%
+    font-size: 400%
 
 @keyframes rotation
   from
@@ -85,8 +91,6 @@ i
     background-color: white
     vertical-align: middle
     animation: rotation 40s infinite linear
-  .title
-    height: 80%
 
 // BIO
 .bio
@@ -96,7 +100,6 @@ i
 // INDIVIDUAL PROJECTS
 .projectBox
   height: 100%
-  padding: 30px 0
   .projectHeaderName
     display: inline
   video, img

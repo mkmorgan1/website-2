@@ -7,6 +7,7 @@ import Header from './Header.jsx';
 const Project = ({app, styles}) => {
   return (
     <div className={`${styles.boxes} randColor`}>
+      <br/>
       <ScrollAnimation
         animateIn='fadeIn'
         duration='2'
