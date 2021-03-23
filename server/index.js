@@ -4,6 +4,7 @@ import secure from 'express-force-https'
 const app = express();
 const PORT = 80;
 import path from 'path';
+import fs from 'fs';
 
 /* GRAPHQL DATA */
 import schema from './graphQl/schema.js';
