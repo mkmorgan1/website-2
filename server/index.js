@@ -1,6 +1,8 @@
 import express from 'express';
+import https from 'https';
+import secure from 'express-force-https'
 const app = express();
-const PORT = 8080;
+const PORT = 80;
 import path from 'path';
 
 /* GRAPHQL DATA */
@@ -15,6 +17,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(secure);
 
 /* FOR POSTMAN */
 app.get('/test', (err, res) => {
@@ -22,8 +25,20 @@ app.get('/test', (err, res) => {
     err ? res.status(404).send(err) : res.status(200).send(result);
   })
 })
+// app.get('*', (req, res) => {
+//   res.redirect(`https://${req.headers.host}${req.url}`);
+// })
+
 
 app.listen(PORT , () => {
   console.log(`listening on port: ${PORT}
-Running a GraphQL API server at http://localhost:${PORT}/graphql`);
+  Running a GraphQL API server at .../graphql`);
 });
+/*
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/www.matthewkerrymorgan.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/www.matthewkerrymorgan.com/fullchain.pem'),
+};
+
+https.createServer(options, app).listen(443, () => console.log('HTTPS Server running on port 443'));
+*/
