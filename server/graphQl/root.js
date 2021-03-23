@@ -44,7 +44,7 @@ const root = {
   },
   createProject: async ({input}) => {
     return await new Promise((resolve, reject) => {
-      project.get(input, (err, result) => {
+      project.create(input, (err, result) => {
         err ? reject(err) : resolve(result);
       })
     })

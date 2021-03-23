@@ -25,15 +25,13 @@ app.get('/test', (err, res) => {
     err ? res.status(404).send(err) : res.status(200).send(result);
   })
 })
-// app.get('*', (req, res) => {
-//   res.redirect(`https://${req.headers.host}${req.url}`);
-// })
-
 
 app.listen(PORT , () => {
   console.log(`listening on port: ${PORT}
   Running a GraphQL API server at .../graphql`);
 });
+
+
 /*
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/www.matthewkerrymorgan.com/privkey.pem'),
