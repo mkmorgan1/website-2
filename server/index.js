@@ -8,6 +8,9 @@ const PORT = 80;
 import path from 'path';
 import fs from 'fs';
 
+/* FUNCTIONS */
+import { project, bio } from './../database/index.js'
+
 /* GRAPHQL DATA */
 import schema from './graphQl/schema.js';
 import root from './graphQl/root.js';
@@ -23,7 +26,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 /* FOR POSTMAN */
 app.get('/test', (err, res) => {
-  getAllProjects((err, result) => {
+  project.get((err, result) => {
     err ? res.status(404).send(err) : res.status(200).send(result);
   })
 })
