@@ -10,6 +10,8 @@ import SocialLinks from './SocialLinks.jsx';
 import Bio from './Bio.jsx'
 import Projects from './projects/Projects.jsx';
 
+import MY_IP_ADDRESS from './mattsIpAddress.js';
+
 
 class App extends React.Component {
   constructor() {
@@ -17,13 +19,31 @@ class App extends React.Component {
     this.state = {
       projectData: [],
       bioData: {bio: ''},
+      ipAddress: '',
+      admin: false,
     }
     this.makeColors = this.makeColors.bind(this);
     this.getData = this.getData.bind(this);
     this.randBackgroundColor = this.randBackgroundColor.bind(this);
     this.redirectToHttps = this.redirectToHttps.bind(this);
+    this.getIpAddress = this.getIpAddress.bind(this);
   }
 
+  getIpAddress() {
+    $.getJSON('https://api.ipify.org?format=json', (data) => {
+        if (data.ip === MY_IP_ADDRESS) {
+          console.log("It's Matt");
+          this.setState({
+            ipAddress: data.ip,
+            admin: true,
+          })
+        } else {
+          this.setState({
+            ipAddress: data.ip,
+          })
+        }
+    });
+  }
   /* REDIRECT TO HTTPS ON DEPLOYMENT */
   redirectToHttps() {
     const link = window.location.href;
@@ -78,6 +98,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.redirectToHttps();
+    this.getIpAddress();
     this.getData(project.get, 'projectData', 'getProjects')
     this.getData(bio.get, 'bioData', 'getBio');
   }
