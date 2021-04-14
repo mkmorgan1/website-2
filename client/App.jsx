@@ -27,7 +27,7 @@ class App extends React.Component {
   /* REDIRECT TO HTTPS ON DEPLOYMENT */
   redirectToHttps() {
     const link = window.location.href;
-      if(link[4] !== "s" && !(link.includes('localhost'))){
+      if(link[4] !== "s" && !(link.includes('localhost')) && !(link.includes('graphql'))){
         let clink = "";
         for (let i = 4; i < link.length; i++) {
           clink += link[i];
