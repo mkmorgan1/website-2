@@ -28,7 +28,7 @@ class App extends React.Component {
     this.redirectToHttps = this.redirectToHttps.bind(this);
     this.getIpAddress = this.getIpAddress.bind(this);
   }
-
+  // GETS IP ADDRESS FROM USER AND SETS ADMIN
   getIpAddress() {
     $.getJSON('https://api.ipify.org?format=json', (data) => {
         if (data.ip === MY_IP_ADDRESS) {
@@ -117,7 +117,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        <Projects styles={styles} appData={this.state.projectData}/>
+        <Projects styles={styles} appData={this.state.projectData} admin={this.state.admin}/>
 
         {/* CONTACT HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
