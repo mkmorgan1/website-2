@@ -4,7 +4,7 @@ import Media from './Media.jsx';
 import Header from './Header.jsx';
 
 
-const Project = ({app, styles, edit}) => {
+const Project = ({app, styles, toggleEdit}) => {
   return (
     <>
       <Header
@@ -19,7 +19,7 @@ const Project = ({app, styles, edit}) => {
         media={app.media}
         styles={styles}
       />
-      <div className={styles.description} onClick={edit}>
+      <div className={styles.description} onClick={toggleEdit}>
         <q>{app.description}</q>
         <hr/>
         <div><b>Front-End: </b>{app.frontEnd}</div>

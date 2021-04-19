@@ -5,14 +5,16 @@ import Project from './projectComponents/Project.jsx';
 import EditForm from './projectComponents/EditForm.jsx';
 
 const ProjectBox = ({app, styles, admin}) => {
-  const [editable, setEditable] = useState(false)
-  const edit = () => {
-    if (admin) {
-      setEditable(!editable)
-      console.log(`we can edit ${app.id}`)
-      console.log(app)
-    }
+  const [editable, setEditable] = useState(false);
+  const [data, setData] = useState(app);
+
+  const toggleEdit = () => {
+    if (admin) setEditable(!editable);
   }
+  const update = (updates) => {
+    setData(updates);
+  }
+
   return (
     <div className={`${styles.boxes} randColor`}>
       <br/>
@@ -23,15 +25,16 @@ const ProjectBox = ({app, styles, admin}) => {
       >
         {!editable &&
         <Project
-          app={app}
+          app={data}
           styles={styles}
-          edit={edit}
+          toggleEdit={toggleEdit}
         />}
         {editable &&
         <EditForm
-          app={app}
+          app={data}
           styles={styles}
-          edit={edit}
+          toggleEdit={toggleEdit}
+          update={update}
         />}
       </ScrollAnimation>
     </div>

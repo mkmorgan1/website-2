@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import Input from './Input.jsx';
 
-const EditForm = ({app, styles, edit}) => {
+const EditForm = ({app, styles, toggleEdit, update}) => {
   const nameRef = useRef(null);
   const deployedUrlRef = useRef(null);
   const githubRef = useRef(null);
@@ -23,11 +23,12 @@ const EditForm = ({app, styles, edit}) => {
       frontEnd: frontEndRef.current.value,
       backEnd: backEndRef.current.value,
     }
-    console.log(formData)
+    update(formData);
+    toggleEdit();
   }
   return (
     <>
-      <div onClick={edit}>ESC</div>
+      <div onClick={toggleEdit}>X</div>
       <form onSubmit={handleSubmit}>
         <Input
           string={'Name'}
