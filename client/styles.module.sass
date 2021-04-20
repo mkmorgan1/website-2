@@ -41,17 +41,8 @@ i
   max-height: 325px
   text-align: center
 
-@media only screen and (max-width: 1000px)
-  .longBoxes
-    width: 50vw
-    height: 125px
-  .headerBox
-    height: 50vw
-    min-height: 500px
-  .title
-    height: 80%
-
 .titleName
+  cursor: pointer
   padding: 0 20px
   font-size: 300%
   font-family: 'Monoton', cursive
@@ -106,14 +97,53 @@ i
     height: 50%
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px
   a
-    margin: 20px
     font-size: 150%
     color: #555555
     &:hover
       color: black
   .description
     margin: 5%
-    text-align: left
+    text-align: center
     hr
       width: 100%
     q
+
+@media only screen and (max-width: 1000px)
+  .longBoxes
+    width: 50vw
+    height: 125px
+  .headerBox
+    height: 50vw
+    min-height: 500px
+  .title
+    height: 80%
+
+@media only screen and (max-width: 500px)
+  .boxes
+    min-width: 100vw
+    min-height: 100vw
+    font-size: 80%
+  .longBoxes
+    min-width: 100vw
+    font-size: 60%
+  .headerBox
+    min-height: 100vw
+    font-size: 90%
+
+@media only screen and (max-width: 375px)
+  .boxes
+    font-size: 70%
+
+@media only screen and (max-width: 320px)
+  .boxes
+    font-size: 60%
+
+@media only screen and (max-width: 275px)
+  .boxes
+    min-width: 275px
+    min-height: 275px
+    font-size: 50%
+  .longBoxes
+    min-width: 275px
+  .headerBox
+    min-height: 275px
