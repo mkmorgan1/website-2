@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 
 import Project from './projectComponents/Project.jsx';
-import EditForm from './projectComponents/EditForm.jsx';
+import ProjectEditForm from './projectComponents/ProjectEditForm.jsx';
 
 const ProjectBox = ({app, styles, admin}) => {
   const [editable, setEditable] = useState(false);
@@ -30,7 +30,7 @@ const ProjectBox = ({app, styles, admin}) => {
           toggleEdit={toggleEdit}
         />}
         {editable &&
-        <EditForm
+        <ProjectEditForm
           app={data}
           styles={styles}
           toggleEdit={toggleEdit}

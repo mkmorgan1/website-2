@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { updateProjectDb } from './editDatabase.js';
+import React, { useRef } from 'react';
+import { updateDb } from './../../editDatabase.js';
 
-import Input from './Input.jsx';
+import Input from './../../form/Input.jsx';
 
-const EditForm = ({app, styles, toggleEdit, updateProjectState}) => {
+const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState}) => {
   const nameRef = useRef(null);
   const deployedUrlRef = useRef(null);
   const githubRef = useRef(null);
@@ -25,7 +25,7 @@ const EditForm = ({app, styles, toggleEdit, updateProjectState}) => {
       backEnd: backEndRef.current.value,
     }
     updateProjectState(formData);
-    updateProjectDb(formData);
+    updateDb(formData, true);
     toggleEdit();
   }
   return (
@@ -67,11 +67,11 @@ const EditForm = ({app, styles, toggleEdit, updateProjectState}) => {
           value={app.backEnd}
           reference={backEndRef}
         />
-        <button type='submit'>edit</button>
+        <button type='submit'>Edit</button>
       </form>
     </>
 
   )
 }
 
-export default EditForm;
+export default ProjectEditForm;

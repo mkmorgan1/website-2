@@ -7,7 +7,7 @@ import {bio, project} from './requestQueries.js'
 import Header from './Header.jsx';
 import ProfilePhoto from './profilePhoto/ProfilePhoto.jsx';
 import SocialLinks from './SocialLinks.jsx';
-import Bio from './Bio.jsx'
+import Bio from './bio/Bio.jsx'
 import Projects from './projects/Projects.jsx';
 
 import MY_IP_ADDRESS from './mattsIpAddress.js';
@@ -108,7 +108,7 @@ class App extends React.Component {
       <div className={styles.container}>
         <Header styles={styles} makeColors={this.makeColors}/>
         <ProfilePhoto styles={styles} />
-        <Bio styles={styles} bioData={this.state.bioData}/>
+        <Bio styles={styles} bioData={this.state.bioData} admin={this.state.admin}/>
 
         {/* APPLICATIONS HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
