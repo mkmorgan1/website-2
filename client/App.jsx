@@ -113,7 +113,7 @@ class App extends React.Component {
         {/* APPLICATIONS HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
-            <p className={styles.titleName}>Applications</p>
+            <p className={styles.titleName} onClick={this.makeColors}>Applications</p>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ class App extends React.Component {
         {/* CONTACT HEADER */}
         <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
-            <p className={styles.titleName}>Contact</p>
+            <p className={styles.titleName} onClick={this.makeColors}>Contact</p>
           </div>
         </div>
 

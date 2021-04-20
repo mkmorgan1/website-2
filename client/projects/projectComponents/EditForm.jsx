@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
+import { updateProjectDb } from './editDatabase.js';
 
 import Input from './Input.jsx';
 
-const EditForm = ({app, styles, toggleEdit, update}) => {
+const EditForm = ({app, styles, toggleEdit, updateProjectState}) => {
   const nameRef = useRef(null);
   const deployedUrlRef = useRef(null);
   const githubRef = useRef(null);
@@ -23,7 +24,8 @@ const EditForm = ({app, styles, toggleEdit, update}) => {
       frontEnd: frontEndRef.current.value,
       backEnd: backEndRef.current.value,
     }
-    update(formData);
+    updateProjectState(formData);
+    updateProjectDb(formData);
     toggleEdit();
   }
   return (

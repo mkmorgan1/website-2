@@ -11,7 +11,7 @@ const ProjectBox = ({app, styles, admin}) => {
   const toggleEdit = () => {
     if (admin) setEditable(!editable);
   }
-  const update = (updates) => {
+  const updateProjectState = (updates) => {
     setData(updates);
   }
 
@@ -34,7 +34,7 @@ const ProjectBox = ({app, styles, admin}) => {
           app={data}
           styles={styles}
           toggleEdit={toggleEdit}
-          update={update}
+          updateProjectState={updateProjectState}
         />}
       </ScrollAnimation>
     </div>
