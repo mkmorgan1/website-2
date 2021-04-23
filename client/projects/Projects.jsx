@@ -1,58 +1,34 @@
-import React, { useState } from 'react';
-import ScrollAnimation from 'react-animate-on-scroll';
+import React, { useState, useEffect } from 'react';
 
-import Project from './projectComponents/Project.jsx';
-import ProjectEditForm from './projectComponents/ProjectEditForm.jsx';
+import ProjectBox from './projectComponents/ProjectBox.jsx';
+import FillerBox from './projectComponents/FillerBox.jsx'
 
-const ProjectBox = ({app, styles, admin}) => {
-  const [editable, setEditable] = useState(false);
-  const [data, setData] = useState(app);
-
-  const toggleEdit = () => {
-    if (admin) setEditable(!editable);
-  }
-  const updateProjectState = (updates) => {
-    setData(updates);
-  }
-
-  return (
-    <div className={`${styles.boxes} randColor`}>
-      <br/>
-      <ScrollAnimation
-        animateIn='fadeIn'
-        duration='2'
-        className={styles.projectBox}
-      >
-        {!editable &&
-        <Project
-          app={data}
-          styles={styles}
-          toggleEdit={toggleEdit}
-        />}
-        {editable &&
-        <ProjectEditForm
-          app={data}
-          styles={styles}
-          toggleEdit={toggleEdit}
-          updateProjectState={updateProjectState}
-        />}
-      </ScrollAnimation>
-    </div>
-  )
-}
 
 const Projects = ({appData, styles, admin}) => {
+
+  const [extra, setExtra] = useState(false)
+  useEffect(()=> {
+    console.log(appData.length + 1 % 2 === 0)
+    if (appData.length + 1 % 2 !== 0) setExtra(true);
+  },[appData])
+
   return (
-    appData.map(app => {
-      return (
-        <ProjectBox
-          key={app.id}
-          styles={styles}
-          app={app}
-          admin={admin}
-        />
-      )
-    })
+    <>
+      <FillerBox styles={styles}/>
+      {/* ALL THE PROJECTS */}
+      {appData.map(app => {
+        return (
+          <ProjectBox
+            key={app.id}
+            styles={styles}
+            app={app}
+            admin={admin}
+          />
+        )
+      })}
+      {extra && <FillerBox styles={styles}/>}
+    </>
+
   )
 }
 

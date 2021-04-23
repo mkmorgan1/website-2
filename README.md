@@ -16,13 +16,15 @@ I created this single-page application to showcase a couple of the most recent p
   npm install
 ```
 
-To be able to edit projects
+To be able to edit projects run this code 👇🏼
 
 ```bash
 
   echo "export default 'YOUR_IP_ADDRESS';" >> client/mattsIpAddress.js
 
 ```
+
+..then click on project descriptions to edit
 
 ## Run
 
