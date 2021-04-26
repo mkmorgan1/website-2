@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { updateDb } from './../../editDatabase.js';
+import { updateBio } from './../../editDatabase.js';
 
 
 import Input from './../../form/Input.jsx';
@@ -14,7 +14,7 @@ const BioEditForm = ({bioData, styles, updateBioState, toggleEdit}) => {
       bio: bioRef.current.value
     }
     updateBioState(formData);
-    updateDb(formData, false);
+    updateBio(formData);
     toggleEdit()
   }
 

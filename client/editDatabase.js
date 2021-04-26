@@ -1,7 +1,19 @@
-export const updateDb = (data, project) => {
-  let query;
-  if (project) {
-    query = JSON.stringify({
+const fetchRequest = (query) => {
+  fetch('/graphql', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: query,
+  })
+    .then((data) => data.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
+}
+
+export const updateProject = (data) => {
+  const query = JSON.stringify({
       query: `mutation {
         updateProject(
           id: "${data.id}",
@@ -17,8 +29,12 @@ export const updateDb = (data, project) => {
         )
       }`
     });
-  } else {
-    query = JSON.stringify({
+
+    fetchRequest(query);
+  }
+
+  export const updateBio = (data) => {
+    const query = JSON.stringify({
       query: `mutation {
         updateBio(
           id: "${data.id}",
@@ -28,18 +44,25 @@ export const updateDb = (data, project) => {
         )
       }`
     });
+    fetchRequest(query);
   }
 
-  fetch('/graphql', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: query,
-  })
-    .then((data) => data.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err));
-}
+export const createProject = (data) => {
+  const query = JSON.stringify({
+      query: `mutation {
+        createProject ( input: {
+          name: "${data.name}",
+          github: "${data.github}",
+          deployedUrl: "${data.deployedUrl}",
+          description: "${data.description}",
+          frontEnd: "${data.frontEnd}",
+          backEnd: "${data.backEnd}",
+          media: "${data.media}",
+        }) {
+          id
+        }
+      }`
+  });
 
+  fetchRequest(query);
+}

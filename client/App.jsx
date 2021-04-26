@@ -95,7 +95,7 @@ class App extends React.Component {
           this.randBackgroundColor('.randColor');
         }
       });
-    }
+  }
 
   componentDidMount() {
     this.redirectToHttps();

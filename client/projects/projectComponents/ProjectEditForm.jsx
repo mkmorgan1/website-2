@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
-import { updateDb } from './../../editDatabase.js';
 
 import Input from './../../form/Input.jsx';
 
-const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState}) => {
+const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState, dbFunction}) => {
   const nameRef = useRef(null);
   const deployedUrlRef = useRef(null);
   const githubRef = useRef(null);
@@ -24,10 +23,12 @@ const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState}) => {
       frontEnd: frontEndRef.current.value,
       backEnd: backEndRef.current.value,
     }
-    updateProjectState(formData);
-    updateDb(formData, true);
+    if (app.id) updateProjectState(formData);
+    dbFunction(formData);
     toggleEdit();
+    // if (!app.id) location.reload();
   }
+
   return (
     <>
       <div onClick={toggleEdit}>X</div>
