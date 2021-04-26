@@ -8,13 +8,11 @@ const Projects = ({appData, styles, admin}) => {
 
   const [extra, setExtra] = useState(false)
   useEffect(()=> {
-    console.log(appData.length + 1 % 2 === 0)
     if (appData.length + 1 % 2 !== 0) setExtra(true);
   },[appData])
 
   return (
     <>
-      <FillerBox styles={styles}/>
       {/* ALL THE PROJECTS */}
       {appData.map(app => {
         return (

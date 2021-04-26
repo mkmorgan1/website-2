@@ -9,6 +9,7 @@ import ProfilePhoto from './profilePhoto/ProfilePhoto.jsx';
 import SocialLinks from './SocialLinks.jsx';
 import Bio from './bio/Bio.jsx'
 import Projects from './projects/Projects.jsx';
+import ApplicationsHeader from './projects/ApplicationsHeader.jsx';
 
 import MY_IP_ADDRESS from './mattsIpAddress.js';
 
@@ -111,12 +112,12 @@ class App extends React.Component {
         <Bio styles={styles} bioData={this.state.bioData} admin={this.state.admin}/>
 
         {/* APPLICATIONS HEADER */}
-        <div className={`${styles.longBoxes} randColor`}>
+        {/* <div className={`${styles.longBoxes} randColor`}>
           <div className={styles.centerContent}>
             <p className={styles.titleName} onClick={this.makeColors}>Applications</p>
           </div>
-        </div>
-
+        </div> */}
+        <ApplicationsHeader makeColors={this.makeColors} styles={styles}/>
         <Projects styles={styles} appData={this.state.projectData} admin={this.state.admin}/>
 
         {/* CONTACT HEADER */}
