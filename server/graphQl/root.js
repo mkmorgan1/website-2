@@ -28,7 +28,7 @@ const root = {
       });
     })
     .then(() => 'Successful Bio Update')
-    .catch(err => err);
+    .catch(err => console.error(err));
   },
   /* PROJECTS */
   getProjects: async () => {
@@ -58,7 +58,16 @@ const root = {
       })
     })
       .then(() => "Successful Project Update")
-      .catch(() => 'Failed to Update');
+      .catch((err) => console.error(err));
+  },
+  deleteProject: async({id}) => {
+    return new Promise((resolve, reject) => {
+      project.delete(id, (err, result) => {
+        err ? reject(err) : resolve(result);
+      })
+    })
+    .then(() => "Successful Delete")
+    .catch((err) => console.error(err));
   }
 };
 

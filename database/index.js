@@ -49,7 +49,7 @@ export const project = {
       err ? done(err) : done(null, res);
     });
   },
-  delete: (id) => {
+  delete: (id, done) => {
     Project.deleteOne({_id: id}, (err, res) => {
       err ? done(err) : done(null, res);
     });
