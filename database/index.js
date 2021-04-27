@@ -32,6 +32,7 @@ export const bio = {
   }
 }
 
+/* PROJECT FUNCTIONS */
 export const project = {
   create: (data, done) => {
     Project.create(data, (err, res) => {
@@ -45,7 +46,12 @@ export const project = {
   },
   update: (id, data, done) => {
     Project.updateOne({_id: id}, data, (err, res) => {
-      err ? done(err) : done(null, res)
+      err ? done(err) : done(null, res);
+    });
+  },
+  delete: (id) => {
+    Project.deleteOne({_id: id}, (err, res) => {
+      err ? done(err) : done(null, res);
     });
   }
 }
