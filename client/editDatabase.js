@@ -66,3 +66,14 @@ export const createProject = (data) => {
 
   fetchRequest(query);
 }
+
+export const deleteProject = (id) => {
+  const query = JSON.stringify({
+    query: `mutation {
+      deleteProject (
+        id: "${id}"
+      )
+    }`
+  });
+  fetchRequest(query);
+}
