@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
+import { deleteProject } from './../../editDatabase.js'
 
 import Input from './../../form/Input.jsx';
 
-const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState, dbFunction}) => {
+const ProjectEditForm = ({app, styles, toggleEdit, dbFunction, getData}) => {
   const nameRef = useRef(null);
   const deployedUrlRef = useRef(null);
   const githubRef = useRef(null);
@@ -10,6 +11,14 @@ const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState, dbFunctio
   const descriptionRef = useRef(null);
   const frontEndRef = useRef(null);
   const backEndRef = useRef(null);
+
+  const deleteBtn = () => {
+    if (app.id) {
+      if (confirm('Are you sure you want to delete this project?')) {
+        deleteProject(app.id, getData);
+      }
+    } else toggleEdit();
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,10 +32,7 @@ const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState, dbFunctio
       frontEnd: frontEndRef.current.value,
       backEnd: backEndRef.current.value,
     }
-    if (app.id) updateProjectState(formData);
     dbFunction(formData);
-    toggleEdit();
-    // if (!app.id) location.reload();
   }
 
   return (
@@ -69,6 +75,7 @@ const ProjectEditForm = ({app, styles, toggleEdit, updateProjectState, dbFunctio
           reference={backEndRef}
         />
         <button type='submit'>Edit</button>
+        <button onClick={deleteBtn}>Delete Project</button>
       </form>
     </>
 

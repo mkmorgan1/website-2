@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import ProjectEditForm from './ProjectEditForm.jsx';
 import { createProject } from './../../editDatabase.js';
 
-const FillerBox = ({styles}) => {
+const FillerBox = ({styles, getData}) => {
   const [edit, setEdit] = useState(false);
+  const toggleEdit = () => {
+    if (getData) setEdit(!edit);
+  }
 
-  const toggleEdit = () => setEdit(!edit);
+  const createAndRefresh = (data) => {
+    createProject(data, getData);
+    toggleEdit();
+  }
 
   return (
       <div className={`${styles.boxes} randColor`} >
@@ -13,7 +19,8 @@ const FillerBox = ({styles}) => {
           <ProjectEditForm app={{}}
             styles={styles}
             toggleEdit={toggleEdit}
-            dbFunction={createProject}
+            dbFunction={createAndRefresh}
+            getData={getData}
           />
         }
         {!edit &&

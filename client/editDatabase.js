@@ -1,4 +1,5 @@
-const fetchRequest = (query) => {
+/* FETCHING */
+const fetchRequest = (query, callback) => {
   fetch('/graphql', {
     method: 'POST',
     headers: {
@@ -8,10 +9,29 @@ const fetchRequest = (query) => {
     body: query,
   })
     .then((data) => data.json())
-    .then(data => console.log(data))
+    .then(data => {
+      if (callback) callback();
+      console.log(data)
+    })
     .catch(err => console.error(err));
 }
 
+/* UPDATE BIO */
+export const updateBio = (data) => {
+  const query = JSON.stringify({
+    query: `mutation {
+      updateBio(
+        id: "${data.id}",
+        input: {
+          bio: "${data.bio}",
+        }
+      )
+    }`
+  });
+  fetchRequest(query);
+}
+
+/* UPDATE PROJECT */
 export const updateProject = (data) => {
   const query = JSON.stringify({
       query: `mutation {
@@ -29,25 +49,11 @@ export const updateProject = (data) => {
         )
       }`
     });
-
     fetchRequest(query);
   }
 
-  export const updateBio = (data) => {
-    const query = JSON.stringify({
-      query: `mutation {
-        updateBio(
-          id: "${data.id}",
-          input: {
-            bio: "${data.bio}",
-          }
-        )
-      }`
-    });
-    fetchRequest(query);
-  }
-
-export const createProject = (data) => {
+/* CREATE PROJECT */
+export const createProject = (data, callback) => {
   const query = JSON.stringify({
       query: `mutation {
         createProject ( input: {
@@ -63,11 +69,11 @@ export const createProject = (data) => {
         }
       }`
   });
-
-  fetchRequest(query);
+  fetchRequest(query, callback);
 }
 
-export const deleteProject = (id) => {
+/* DELETE PROJECT */
+export const deleteProject = (id, callback) => {
   const query = JSON.stringify({
     query: `mutation {
       deleteProject (
@@ -75,5 +81,5 @@ export const deleteProject = (id) => {
       )
     }`
   });
-  fetchRequest(query);
+  fetchRequest(query, callback);
 }

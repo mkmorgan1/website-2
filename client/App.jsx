@@ -72,7 +72,17 @@ class App extends React.Component {
   }
 
   /* API CALL FOR ALL DATA */
-  getData(request, stateName, dataFunc) {
+  getData(type) {
+    let request, stateName, dataFunc;
+    if (type === 'bio'){
+      request = bio.get;
+      stateName = 'bioData';
+      dataFunc = 'getBio';
+    } else {
+      request = project.get;
+      stateName = 'projectData';
+      dataFunc = 'getProjects';
+    }
     const query = request;
     fetch('/graphql', {
       method: 'POST',
@@ -100,8 +110,8 @@ class App extends React.Component {
   componentDidMount() {
     this.redirectToHttps();
     this.getIpAddress();
-    this.getData(project.get, 'projectData', 'getProjects')
-    this.getData(bio.get, 'bioData', 'getBio');
+    this.getData();
+    this.getData('bio');
   }
 
   render() {
@@ -118,7 +128,7 @@ class App extends React.Component {
           </div>
         </div> */}
         <ApplicationsHeader makeColors={this.makeColors} styles={styles}/>
-        <Projects styles={styles} appData={this.state.projectData} admin={this.state.admin}/>
+        <Projects styles={styles} appData={this.state.projectData} getData={this.getData} admin={this.state.admin}/>
 
         {/* CONTACT HEADER */}
         <div className={`${styles.longBoxes} randColor`}>

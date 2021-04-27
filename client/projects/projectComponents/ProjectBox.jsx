@@ -3,17 +3,21 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 import Project from './Project.jsx';
 import ProjectEditForm from './ProjectEditForm.jsx';
+
 import { updateProject } from './../../editDatabase.js';
 
-const ProjectBox = ({app, styles, admin}) => {
+const ProjectBox = ({app, styles, admin, getData}) => {
   const [editable, setEditable] = useState(false);
   const [data, setData] = useState(app);
 
   const toggleEdit = () => {
     if (admin) setEditable(!editable);
   }
+
   const updateProjectState = (updates) => {
     setData(updates);
+    updateProject(updates);
+    toggleEdit();
   }
 
   return (
@@ -35,8 +39,8 @@ const ProjectBox = ({app, styles, admin}) => {
           app={data}
           styles={styles}
           toggleEdit={toggleEdit}
-          updateProjectState={updateProjectState}
-          dbFunction={updateProject}
+          dbFunction={updateProjectState}
+          getData={getData}
         />}
       </ScrollAnimation>
     </div>

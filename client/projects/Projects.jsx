@@ -4,7 +4,7 @@ import ProjectBox from './projectComponents/ProjectBox.jsx';
 import FillerBox from './projectComponents/FillerBox.jsx'
 
 
-const Projects = ({appData, styles, admin}) => {
+const Projects = ({appData, styles, admin, getData}) => {
 
   const [extra, setExtra] = useState(false)
   useEffect(()=> {
@@ -14,7 +14,7 @@ const Projects = ({appData, styles, admin}) => {
   return (
     <>
       {/* ALL THE PROJECTS */}
-      {admin && <FillerBox styles={styles}/>}
+      {admin && <FillerBox styles={styles} getData={getData}/>}
       {appData.map(app => {
         return (
           <ProjectBox
@@ -22,6 +22,7 @@ const Projects = ({appData, styles, admin}) => {
             styles={styles}
             app={app}
             admin={admin}
+            getData={getData}
           />
         )
       })}
