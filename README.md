@@ -9,6 +9,7 @@ I created this single-page application to showcase a couple of the most recent p
 - I have an AWS S3 bucket and EC2 instance for storage and deployment.
 - Changes in state and rendering are implemented through React.
 - A MongoDB database stores data for the website.
+- Projects and bio are editable from my IP address
 
 ## Installation
 
@@ -23,15 +24,12 @@ Install node packages
 To be able to edit projects run this code 👇🏼
 
 ```bash
-
-  echo "export default 'YOUR_IP_ADDRESS';" >> client/mattsIpAddress.js
-
+  echo "export default 'PUT_YOUR_IP_ADDRESS';" >> client/mattsIpAddress.js
 ```
 
 Add a bio after starting the server: localhost/graphql
 
 ```bash
-
 mutation {
   createBio(input: {
     bio: "BIO"
@@ -40,10 +38,9 @@ mutation {
     bio
   }
 }
-
 ```
 
-..then click on project descriptions to edit
+..then click on project descriptions or bio to edit
 
 ## Run
 
@@ -51,6 +48,12 @@ Node
 
 ```bash
   npm start
+```
+
+Nodemon
+
+```bash
+  npm run dev
 ```
 
 PM2
@@ -69,5 +72,5 @@ PM2
 ## Webpack
 
 ```bash
-  npm run dev
+  npm run build
 ```
