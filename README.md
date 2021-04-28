@@ -12,6 +12,10 @@ I created this single-page application to showcase a couple of the most recent p
 
 ## Installation
 
+Be sure MongoBD is installed and running
+
+Install node packages
+
 ```bash
   npm install
 ```
@@ -21,6 +25,21 @@ To be able to edit projects run this code 👇🏼
 ```bash
 
   echo "export default 'YOUR_IP_ADDRESS';" >> client/mattsIpAddress.js
+
+```
+
+Add a bio after starting the server: localhost/graphql
+
+```bash
+
+mutation {
+  createBio(input: {
+    bio: "BIO"
+  }) {
+    id
+    bio
+  }
+}
 
 ```
 
