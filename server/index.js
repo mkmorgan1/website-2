@@ -39,8 +39,8 @@ app.listen(PORT , () => {
 
 /*
 const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/www.matthewkerrymorgan.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/www.matthewkerrymorgan.com/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/matthewkerrymorgan.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/matthewkerrymorgan.com/fullchain.pem'),
 };
 
 https.createServer(options, app).listen(443, () => console.log('HTTPS Server running on port 443'));
