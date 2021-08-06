@@ -32,11 +32,11 @@ export default ({ styles }) => {
           link="https://github.com/mkmorgan1"
           logo={<i className="fab fa-github"></i>}
         />
-        {/* TWITTER */}
+        {/* MEDIUM */}
         <SocialLink
           styles={styles}
-          link="https://twitter.com/m_kmorgan"
-          logo={<i className="fab fa-twitter"></i>}
+          link="https://mkmorgan1994.medium.com/"
+          logo={<i className="fab fa-medium-m"></i>}
         />
       </div>
     </div>
