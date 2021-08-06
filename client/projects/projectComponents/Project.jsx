@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Media from './Media.jsx';
-import Header from './Header.jsx';
+import Media from "./Media.jsx";
+import Header from "./Header.jsx";
 
-
-const Project = ({app, styles, toggleEdit}) => {
+const Project = ({ app, styles, toggleEdit }) => {
   return (
     <>
       <Header
@@ -13,21 +12,23 @@ const Project = ({app, styles, toggleEdit}) => {
         github={app.github}
         deployed={app.deployedUrl}
       />
-      <hr/>
-      <br/>
-      <Media
-        media={app.media}
-        styles={styles}
-      />
+      <hr />
+      <br />
+      <Media media={app.media} styles={styles} />
       <div className={styles.description} onClick={toggleEdit}>
         <q>{app.description}</q>
-        <hr/>
-        <div><b>Front-End: </b>{app.frontEnd}</div>
-        <div><b>Back-End: </b>{app.backEnd}</div>
+        <hr />
+        <div>
+          <b>Front-End: </b>
+          {app.frontEnd}
+        </div>
+        <div>
+          <b>Back-End: </b>
+          {app.backEnd}
+        </div>
       </div>
     </>
-  )
+  );
+};
 
-}
-
-export default Project
+export default Project;

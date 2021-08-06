@@ -11,8 +11,7 @@ export const project = {
       media
     }
   }`,
-
-}
+};
 
 export const bio = {
   get: `query {
@@ -21,5 +20,4 @@ export const bio = {
       bio
     }
   }`,
-
-}
+};

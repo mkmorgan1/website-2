@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const SocialLink = ({styles, link, logo}) => {
+const SocialLink = ({ styles, link, logo }) => {
   return (
     <div className={`${styles.smallBox} ${styles.contactLink} randColor`}>
-      <a href={link} target='_blank'>{logo}</a>
+      <a href={link} target="_blank">
+        {logo}
+      </a>
     </div>
-  )
-}
+  );
+};
 
-export default ({styles}) => {
+export default ({ styles }) => {
   return (
     <div className={styles.longBoxes}>
       <div className={styles.smallBoxContainer}>
@@ -21,22 +23,22 @@ export default ({styles}) => {
         {/* LINKEDIN */}
         <SocialLink
           styles={styles}
-          link='https://www.linkedin.com/in/mkmorgan1/'
-          logo={<i className='fab fa-linkedin-in'></i>}
+          link="https://www.linkedin.com/in/mkmorgan1/"
+          logo={<i className="fab fa-linkedin-in"></i>}
         />
         {/* GITHUB */}
         <SocialLink
           styles={styles}
-          link='https://github.com/mkmorgan1'
-          logo={<i className='fab fa-github'></i>}
+          link="https://github.com/mkmorgan1"
+          logo={<i className="fab fa-github"></i>}
         />
         {/* TWITTER */}
         <SocialLink
           styles={styles}
-          link='https://twitter.com/m_kmorgan'
-          logo={<i className='fab fa-twitter'></i>}
+          link="https://twitter.com/m_kmorgan"
+          logo={<i className="fab fa-twitter"></i>}
         />
       </div>
     </div>
   );
-}
+};

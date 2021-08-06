@@ -1,20 +1,20 @@
 /* FETCHING */
 const fetchRequest = (query, callback) => {
-  fetch('/graphql', {
-    method: 'POST',
+  fetch("/graphql", {
+    method: "POST",
     headers: {
-      'content-type': 'application/json',
-      'Accept': 'application/json'
+      "content-type": "application/json",
+      Accept: "application/json",
     },
     body: query,
   })
     .then((data) => data.json())
-    .then(data => {
+    .then((data) => {
       if (callback) callback();
-      console.log(data)
+      console.log(data);
     })
-    .catch(err => console.error(err));
-}
+    .catch((err) => console.error(err));
+};
 
 /* UPDATE BIO */
 export const updateBio = (data) => {
@@ -26,15 +26,15 @@ export const updateBio = (data) => {
           bio: "${data.bio}",
         }
       )
-    }`
+    }`,
   });
   fetchRequest(query);
-}
+};
 
 /* UPDATE PROJECT */
 export const updateProject = (data) => {
   const query = JSON.stringify({
-      query: `mutation {
+    query: `mutation {
         updateProject(
           id: "${data.id}",
           input: {
@@ -47,15 +47,15 @@ export const updateProject = (data) => {
             media: "${data.media}",
           }
         )
-      }`
-    });
-    fetchRequest(query);
-  }
+      }`,
+  });
+  fetchRequest(query);
+};
 
 /* CREATE PROJECT */
 export const createProject = (data, callback) => {
   const query = JSON.stringify({
-      query: `mutation {
+    query: `mutation {
         createProject ( input: {
           name: "${data.name}",
           github: "${data.github}",
@@ -67,10 +67,10 @@ export const createProject = (data, callback) => {
         }) {
           id
         }
-      }`
+      }`,
   });
   fetchRequest(query, callback);
-}
+};
 
 /* DELETE PROJECT */
 export const deleteProject = (id, callback) => {
@@ -79,7 +79,7 @@ export const deleteProject = (id, callback) => {
       deleteProject (
         id: "${id}"
       )
-    }`
+    }`,
   });
   fetchRequest(query, callback);
-}
+};
