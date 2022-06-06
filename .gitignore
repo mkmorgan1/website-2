@@ -6,6 +6,8 @@
 *.txt
 mattsIpAddress.js
 .DS_Store
+bundle.js*
+package-lock.json
 # User-specific files
 *.rsuser
 *.suo
