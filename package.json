@@ -9,7 +9,7 @@
     "startPm2": "pm2 start npm -- run start",
     "stopPm2": "pm2 stop npm",
     "start": "babel-node server/index.js",
-    "dev": "nodemon --exec babel-node server/index.js",
+    "dev": "nodemon --exec npm run start",
     "prettier": "prettier --write 'client/.'"
   },
   "repository": {
