@@ -21,8 +21,10 @@ app.use('/graphql', graphqlHTTP({
   rootValue: root,
   graphiql: true,
 }));
+
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/time-travel-agent', express.static(path.join(__dirname, './../../time-travel-agent/public')))
 
 /* FOR POSTMAN */
 app.get('/test', (err, res) => {
