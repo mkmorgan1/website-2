@@ -23,7 +23,8 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 app.use(express.urlencoded({ extended: false }));
-app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, './../../social_links_tree/public')))
+app.use('/portfolio', express.static(path.join(__dirname, '../public')))
 app.use('/time-travel-agent', express.static(path.join(__dirname, './../../time-travel-agent/public')))
 
 /* FOR POSTMAN */
